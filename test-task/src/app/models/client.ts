@@ -12,3 +12,10 @@ export interface Name {
   first: string;
   last: string;
 }
+
+export enum TransactionEnum {
+  INCOME = 'income',
+  OUTCOME = 'outcome',
+  LOAN = 'loan',
+  INVESTMENT = 'investment',
+}
