@@ -35,20 +35,22 @@
             Investments
           </button>
         </div>
-        <table class="table">
-          <thead>
-            <tr>
-              <td scope="col">Name</td>
-              <td scope="col">Acount</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let client of filtredClients">
-              <td>{{ client.name.last }}</td>
-              <td>{{ client.amount }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="overflow-auto" style="height: 250px">
+          <table class="table">
+            <thead>
+              <tr>
+                <td scope="col">Name</td>
+                <td scope="col">Acount</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let client of filtredClients">
+                <td>{{ client.name.first }} {{ client.name.last }}</td>
+                <td>{{ client.amount }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
