@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { IClient, TransactionEnum } from 'src/app/models/client';
 import { ListService } from 'src/app/services/list.service';
 import { TransactionPipe } from 'src/app/services/transaction.pipe';
@@ -13,14 +13,12 @@ import { TransactionPipe } from 'src/app/services/transaction.pipe';
 export class SummaryComponent implements OnInit {
   clients!: IClient[];
   clientsSubscription!: Subscription;
-  filtredClientsIncome!: Observable<IClient>[];
-  filtredClientsOutcome!: Observable<IClient>[];
-  filtredClientsInvest!: Observable<IClient>[];
-  filtredClientsLoan!: Observable<IClient>[];
+  filtredClientsIncome!: IClient[];
+  filtredClientsOutcome!: IClient[];
+  filtredClientsInvest!: IClient[];
+  filtredClientsLoan!: IClient[];
 
-  constructor(
-    private ListService: ListService // private transactionPipe: TransactionPipe
-  ) {}
+  constructor(private ListService: ListService) {}
 
   ngOnInit(): void {
     this.clientsSubscription = this.ListService.getClientData().subscribe(
