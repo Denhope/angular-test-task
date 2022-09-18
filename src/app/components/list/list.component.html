@@ -1,1 +1,55 @@
-<p>list works!</p>
+<div
+  class="container mx-auto row d-flex justify-content-center align-items-center vh-100"
+>
+  <div class="col md-6">
+    <div class="card b text-black">
+      <div class="card-body p-1 text-center">
+        <div class="w-100 mb-3">
+          <button
+            class="btn btn-outline-secondary w-25"
+            routerLink="/navigator"
+            routerLinkActive="active-router"
+            [queryParams]="{ tab: 0 }"
+          >
+            Income
+          </button>
+          <button
+            class="btn btn-outline-secondary w-25"
+            routerLink="/navigator"
+            [queryParams]="{ tab: 1 }"
+          >
+            Outcome
+          </button>
+          <button
+            class="btn btn-outline-secondary w-25"
+            routerLink="/navigator"
+            [queryParams]="{ tab: 2 }"
+          >
+            Loans
+          </button>
+          <button
+            class="btn btn-outline-secondary w-25"
+            routerLink="/navigator"
+            [queryParams]="{ tab: 3 }"
+          >
+            Investments
+          </button>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <td scope="col">Name</td>
+              <td scope="col">Acount</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let client of filtredClients">
+              <td>{{ client.name.last }}</td>
+              <td>{{ client.amount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
