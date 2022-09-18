@@ -2,9 +2,9 @@
   class="container mx-auto row d-flex justify-content-center align-items-center vh-100"
 >
   <div class="col-md-6">
-    <div class="card b text-black mb-4" style="border-radius: 1rem">
-      <div class="card-body p-5 text-center">
-        <h2>Welcome</h2>
+    <div class="card b text-black mb-4">
+      <div class="card-body p-1 text-center">
+        <h2 class="text-center mt-5">Welcome</h2>
         <p>
           With supporting text bellow as a natural lead-in to additional content
         </p>
@@ -17,9 +17,10 @@
         >
           See transactions
         </button>
-        <div class="text-black">
-          <p>You have {{ clients.length }} transaction</p>
-        </div>
+      </div>
+      <div class="divider"><hr /></div>
+      <div class="text-center">
+        <p>You have {{ clients.length }} transaction</p>
       </div>
     </div>
 
@@ -28,58 +29,62 @@
     >
       <div class="card" style="width: 8rem">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="">{{ filtredClientsIncome.length }}</p>
+          <h5 class="card-title">{{ filtredClientsIncome.length }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Income</h6>
-          <button
-            class="btn btn-sm btn-primary"
-            [routerLink]="['/navigator']"
-            [queryParams]="{ tab: 0 }"
-          >
-            See all
-          </button>
+          <div class="d-flex justify-content-end">
+            <button
+              class="btn btn-sm btn-primary"
+              [routerLink]="['/navigator']"
+              [queryParams]="{ tab: 0 }"
+            >
+              See all
+            </button>
+          </div>
         </div>
       </div>
       <div class="card" style="width: 8rem">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="">{{ filtredClientsInvest.length }}</p>
+          <h5 class="card-title">{{ filtredClientsInvest.length }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Investment</h6>
-          <button
-            class="btn btn-sm btn-primary"
-            [routerLink]="['/navigator']"
-            [queryParams]="{ tab: 1 }"
-          >
-            See all
-          </button>
+          <div class="d-flex justify-content-end">
+            <button
+              class="btn btn-sm btn-primary"
+              [routerLink]="['/navigator']"
+              [queryParams]="{ tab: 1 }"
+            >
+              See all
+            </button>
+          </div>
         </div>
       </div>
       <div class="card" style="width: 8rem">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="">{{ filtredClientsOutcome.length }}</p>
+          <h5 class="card-title">{{ filtredClientsOutcome.length }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Outcome</h6>
-          <button
-            class="btn btn-sm btn-primary"
-            [routerLink]="['/navigator']"
-            [queryParams]="{ tab: 2 }"
-          >
-            See all
-          </button>
+          <div class="d-flex justify-content-end">
+            <button
+              class="btn btn-sm btn-primary"
+              [routerLink]="['/navigator']"
+              [queryParams]="{ tab: 2 }"
+            >
+              See all
+            </button>
+          </div>
         </div>
       </div>
       <div class="card" style="width: 8rem">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="">{{ filtredClientsLoan.length }}</p>
+          <h5 class="card-title">{{ filtredClientsLoan.length }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Loans</h6>
-          <button
-            class="btn btn-sm btn-primary"
-            [routerLink]="['/navigator']"
-            [queryParams]="{ tab: 3 }"
-          >
-            See all
-          </button>
+          <div class="d-flex justify-content-end">
+            <button
+              class="btn btn-sm btn-primary"
+              [routerLink]="['/navigator']"
+              [queryParams]="{ tab: 3 }"
+            >
+              See all
+            </button>
+          </div>
         </div>
       </div>
     </div>
