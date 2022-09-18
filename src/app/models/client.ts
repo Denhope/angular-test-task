@@ -1,7 +1,7 @@
 export interface IClient {
   _id: string;
   amount: string;
-  type: string;
+  type: 'income' | 'outcome' | 'loan' | 'investment';
   name: Name;
   company: string;
   email: string;
