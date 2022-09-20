@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { IClient } from 'src/app/models/client';
 import { ListService } from 'src/app/services/list.service';
 import { SearchValuePipe } from 'src/app/services/searchValue.pipe';
@@ -24,7 +24,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.paramsSubscription = this.router.queryParams.subscribe((tab) => {
-      this.filteredClients = this.ListService.getfilteredTabData(
+      this.filteredClients = this.ListService.getFilteredTabData(
         tab,
         this.clients
       );
@@ -33,7 +33,7 @@ export class ListComponent implements OnInit {
 
     this.ListService.getClientData().subscribe((data) => {
       this.clients = data;
-      this.filteredClients = this.ListService.getfilteredTabData(
+      this.filteredClients = this.ListService.getFilteredTabData(
         this.tab,
         this.clients
       );

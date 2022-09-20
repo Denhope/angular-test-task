@@ -26,7 +26,7 @@ export class ListService {
       transaction
     ));
   }
-  getfilteredTabData(tab: Params, data: IClient[]): IClient[] {
+  getFilteredTabData(tab: Params, data: IClient[]): IClient[] {
     if (Object.values(tab)[0] === '3') {
       return this.filterClientData(data, TransactionEnum.INVESTMENT);
     } else if (Object.values(tab)[0] === '2') {
