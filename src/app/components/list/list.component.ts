@@ -3,18 +3,18 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IClient } from 'src/app/models/client';
 import { ListService } from 'src/app/services/list.service';
-import { TransactionPipe } from 'src/app/services/transaction.pipe';
+import { SearchValuePipe } from 'src/app/services/searchValue.pipe';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  providers: [ListService, TransactionPipe],
+  providers: [ListService, SearchValuePipe],
 })
 export class ListComponent implements OnInit {
   clients!: IClient[];
-  filtredClients!: IClient[];
-  clientsSubscription!: Subscription;
+  filteredClients!: IClient[];
+
   tab!: Params;
 
   constructor(
@@ -24,21 +24,22 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.queryParams.subscribe((tab) => {
-      this.filtredClients = this.ListService.getFiltredTabData(
+      this.filteredClients = this.ListService.getfilteredTabData(
         tab,
         this.clients
       );
       this.tab = tab;
     });
-    this.clientsSubscription = this.ListService.getClientData().subscribe(
-      (data) => {
-        this.clients = data;
+    this.ListService.getClientData().subscribe((data) => {
+      this.clients = data;
 
-        this.filtredClients = this.ListService.getFiltredTabData(
-          this.tab,
-          this.clients
-        );
-      }
-    );
+      this.filteredClients = this.ListService.getfilteredTabData(
+        this.tab,
+        this.clients
+      );
+    });
+  }
+  ngOnDestroy() {
+    // if (this.clientsSubscription) this.clientsSubscription.unsubscribe();
   }
 }

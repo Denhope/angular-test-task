@@ -2,9 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { IClient } from '../models/client';
 
 @Pipe({
-  name: 'transaction',
+  name: 'searchValue',
 })
-export class TransactionPipe implements PipeTransform {
+export class SearchValuePipe implements PipeTransform {
   transform(itemList: any, searchValue: string) {
     if (!itemList) return [];
     if (!searchValue) return itemList;

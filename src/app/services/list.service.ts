@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IClient, TransactionEnum } from '../models/client';
-import { TransactionPipe } from './transaction.pipe';
+import { SearchValuePipe } from './searchValue.pipe';
+import { Params } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ListService {
   url: string = 'http://localhost:3000/data';
-  filtredClients!: IClient;
+  filteredClients!: IClient;
 
-  router: any;
   constructor(
     private http: HttpClient,
-    private transactionPipe: TransactionPipe
+    private SearchValuePipe: SearchValuePipe
   ) {}
 
   getClientData() {
@@ -21,12 +21,12 @@ export class ListService {
   }
 
   filterClientData(data: IClient[], transaction: string): IClient[] {
-    return (this.filtredClients = this.transactionPipe.transform(
+    return (this.filteredClients = this.SearchValuePipe.transform(
       data,
       transaction
     ));
   }
-  getFiltredTabData(tab: Object, data: IClient[]): IClient[] {
+  getfilteredTabData(tab: Params, data: IClient[]): IClient[] {
     if (Object.values(tab)[0] === '3') {
       return this.filterClientData(data, TransactionEnum.INVESTMENT);
     } else if (Object.values(tab)[0] === '2') {

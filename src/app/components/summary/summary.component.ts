@@ -2,21 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IClient, TransactionEnum } from 'src/app/models/client';
 import { ListService } from 'src/app/services/list.service';
-import { TransactionPipe } from 'src/app/services/transaction.pipe';
+import { SearchValuePipe } from 'src/app/services/searchValue.pipe';
 
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.scss'],
-  providers: [TransactionPipe, ListService],
+  providers: [SearchValuePipe, ListService],
 })
 export class SummaryComponent implements OnInit {
   clients!: IClient[];
   clientsSubscription!: Subscription;
-  filtredClientsIncome!: IClient[];
-  filtredClientsOutcome!: IClient[];
-  filtredClientsInvest!: IClient[];
-  filtredClientsLoan!: IClient[];
+  filteredClientsIncome!: IClient[];
+  filteredClientsOutcome!: IClient[];
+  filteredClientsInvest!: IClient[];
+  filteredClientsLoan!: IClient[];
 
   constructor(private ListService: ListService) {}
 
@@ -24,19 +24,19 @@ export class SummaryComponent implements OnInit {
     this.clientsSubscription = this.ListService.getClientData().subscribe(
       (data) => {
         this.clients = data;
-        this.filtredClientsIncome = this.ListService.filterClientData(
+        this.filteredClientsIncome = this.ListService.filterClientData(
           this.clients,
           TransactionEnum.INCOME
         );
-        this.filtredClientsOutcome = this.ListService.filterClientData(
+        this.filteredClientsOutcome = this.ListService.filterClientData(
           this.clients,
           TransactionEnum.OUTCOME
         );
-        this.filtredClientsInvest = this.ListService.filterClientData(
+        this.filteredClientsInvest = this.ListService.filterClientData(
           this.clients,
           TransactionEnum.INVESTMENT
         );
-        this.filtredClientsLoan = this.ListService.filterClientData(
+        this.filteredClientsLoan = this.ListService.filterClientData(
           this.clients,
           TransactionEnum.LOAN
         );
@@ -45,6 +45,6 @@ export class SummaryComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if (this.clientsSubscription) this.clientsSubscription.unsubscribe;
+    if (this.clientsSubscription) this.clientsSubscription.unsubscribe();
   }
 }
