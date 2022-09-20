@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { IClient, TransactionEnum } from 'src/app/models/client';
 import { ListService } from 'src/app/services/list.service';
 import { SearchValuePipe } from 'src/app/services/searchValue.pipe';
@@ -12,7 +11,6 @@ import { SearchValuePipe } from 'src/app/services/searchValue.pipe';
 })
 export class SummaryComponent implements OnInit {
   clients!: IClient[];
-  clientsSubscription!: Subscription;
   filteredClientsIncome!: IClient[];
   filteredClientsOutcome!: IClient[];
   filteredClientsInvest!: IClient[];
@@ -21,30 +19,24 @@ export class SummaryComponent implements OnInit {
   constructor(private ListService: ListService) {}
 
   ngOnInit(): void {
-    this.clientsSubscription = this.ListService.getClientData().subscribe(
-      (data) => {
-        this.clients = data;
-        this.filteredClientsIncome = this.ListService.filterClientData(
-          this.clients,
-          TransactionEnum.INCOME
-        );
-        this.filteredClientsOutcome = this.ListService.filterClientData(
-          this.clients,
-          TransactionEnum.OUTCOME
-        );
-        this.filteredClientsInvest = this.ListService.filterClientData(
-          this.clients,
-          TransactionEnum.INVESTMENT
-        );
-        this.filteredClientsLoan = this.ListService.filterClientData(
-          this.clients,
-          TransactionEnum.LOAN
-        );
-      }
-    );
-  }
-
-  ngOnDestroy() {
-    if (this.clientsSubscription) this.clientsSubscription.unsubscribe();
+    this.ListService.getClientData().subscribe((data) => {
+      this.clients = data;
+      this.filteredClientsIncome = this.ListService.filterClientData(
+        this.clients,
+        TransactionEnum.INCOME
+      );
+      this.filteredClientsOutcome = this.ListService.filterClientData(
+        this.clients,
+        TransactionEnum.OUTCOME
+      );
+      this.filteredClientsInvest = this.ListService.filterClientData(
+        this.clients,
+        TransactionEnum.INVESTMENT
+      );
+      this.filteredClientsLoan = this.ListService.filterClientData(
+        this.clients,
+        TransactionEnum.LOAN
+      );
+    });
   }
 }
