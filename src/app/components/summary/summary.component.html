@@ -1,0 +1,97 @@
+<div
+  class="container pt-5 pb-5 mx-auto row d-flex justify-content-center align-items-center vh-100"
+>
+  <div class="col col-md-9 col-lg-7">
+    <div class="card b text-black mb-4">
+      <div class="card-body p-1 text-center">
+        <h2 class="text-center mt-5">Welcome</h2>
+        <p>
+          With supporting text bellow as a natural lead-in to additional content
+        </p>
+
+        <button
+          type="button"
+          class="btn-lg btn-primary"
+          [routerLink]="['/navigator']"
+        >
+          See transactions
+        </button>
+      </div>
+      <div class="divider"><hr /></div>
+      <div class="text-center">
+        <p>You have {{ clients.length }} transaction</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 mb-2">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ filteredClientsIncome.length }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Income</h6>
+            <div class="d-flex justify-content-end">
+              <button
+                class="btn btn-sm btn-primary w-50"
+                [routerLink]="['/navigator']"
+                [queryParams]="{ tab: 0 }"
+              >
+                See all
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-2">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ filteredClientsInvest.length }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Investments</h6>
+            <div class="d-flex justify-content-end">
+              <button
+                class="btn btn-sm btn-primary w-50"
+                [routerLink]="['/navigator']"
+                [queryParams]="{ tab: 1 }"
+              >
+                See all
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-2">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ filteredClientsOutcome.length }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Outcome</h6>
+            <div class="d-flex justify-content-end">
+              <button
+                class="btn btn-sm btn-primary w-50"
+                [routerLink]="['/navigator']"
+                [queryParams]="{ tab: 2 }"
+              >
+                See all
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-2">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ filteredClientsLoan.length }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Loans</h6>
+            <div class="d-flex justify-content-end">
+              <button
+                class="btn btn-sm btn-primary w-50"
+                [routerLink]="['/navigator']"
+                [queryParams]="{ tab: 3 }"
+              >
+                See all
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
